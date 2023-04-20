@@ -2,9 +2,10 @@
 Sintaxis y semántica de los Lenguajes  
 K2006  
 2023  
-15  
-Avatar  
+Grupo 15  
+Nombre del grupo: Avatar  
 Integrantes:  
+  
 MarcosNicolau  
 209.629-8  
 Nicolau  
