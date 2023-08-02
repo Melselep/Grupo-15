@@ -1,18 +1,29 @@
-module Main where
+module Bench where
+import Text.Printf (printf)
 import Control.Monad (replicateM)
 import System.CPUTime (getCPUTime)
-import Text.Printf (printf)
-import Data.List(sort, find)
 
 measureExecutionTime :: (a -> b) -> a -> Int -> IO Double
 measureExecutionTime f arg iterations = do
   times <- replicateM iterations $ do
     start <- getCPUTime
-    let result = f arg
+    let _ = f arg
     end <- getCPUTime
     return $ fromIntegral (end - start) / (10 ^ 9) -- Convert to milliseconds
   return $ sum times / fromIntegral iterations
 
+
+
+bench :: String -> (a -> b) -> a -> Int -> Int -> IO ()
+bench name f arg wmIterations iterations = do
+  print "============================="
+  print $ "Running " ++ name ++ "..."
+  print $ "Running warmup iterations " ++ show wmIterations ++ " times"
+  _ <- measureExecutionTime f arg wmIterations
+  print $ "Running measure iterations " ++ show iterations ++ " times"
+  time <- measureExecutionTime f arg iterations
+  printf "Result is: %fms\n" time
+  
 list :: [Int]
 list = [
   474, 375, 368, 491, 229, 287, 212, 558, 411, 988, 904, 171, 856, 595, 112, 326, 113, 727, 665,
@@ -69,26 +80,3 @@ list = [
   330, 7, 382, 559, 11, 452, 984, 671, 887, 498, 789, 768, 508, 385, 265, 794, 780, 385
  ]
 
-findEl :: Int -> Maybe Int
-findEl el = find (==el) list
-
-main :: IO ()
-main = do
-  let warmupIterations = 10000
-  let measureIterations = 10000
-  
-  print "============================="
-  print "Running list#sort..."
-  print "Running warmup iterations"
-  _ <- measureExecutionTime sort list warmupIterations
-  print "Running measure iterations"
-  time1 <- measureExecutionTime sort list measureIterations
-  printf "Result is: %f ms\n" time1
-
-  print "============================="
-  print "Running list#find..."
-  print "Running warmup iterations"
-  _ <- measureExecutionTime findEl 569 warmupIterations
-  print "Running measure iterations"
-  time2 <- measureExecutionTime findEl 569 measureIterations
-  printf "Result is: %f ms\n" time2

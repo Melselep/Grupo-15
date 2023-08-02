@@ -3,8 +3,10 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
+	"type": "module",
 	"scripts": {
-		"start": "node bench.js"
+		"sort": "node sort.js",
+		"find": "node find.js"
 	},
 	"keywords": [],
 	"author": "",

@@ -1,4 +1,4 @@
-const array = [
+export const array = [
 	474, 375, 368, 491, 229, 287, 212, 558, 411, 988, 904, 171, 856, 595, 112, 326, 113, 727, 665,
 	535, 93, 77, 809, 567, 80, 978, 33, 559, 951, 513, 199, 634, 96, 267, 974, 725, 44, 143, 733,
 	206, 435, 437, 417, 253, 281, 128, 575, 971, 884, 442, 710, 57, 577, 704, 988, 780, 61, 393,
@@ -52,6 +52,7 @@ const array = [
 	390, 817, 70, 978, 578, 889, 788, 318, 186, 893, 617, 247, 860, 309, 658, 554, 175, 904, 34,
 	330, 7, 382, 559, 11, 452, 984, 671, 887, 498, 789, 768, 508, 385, 265, 794, 780, 385,
 ];
+
 const average = (array) => {
 	const sum = array.reduce((prev, current) => prev + current, 0);
 	return sum / array.length;
@@ -63,10 +64,10 @@ const warmup = (cb, iterations) => {
 	}
 };
 
-const measureExecutionTime = (benchName, cb, wmIterations, iterations) => {
+export const measureExecutionTime = (benchName, cb, wmIterations, iterations) => {
+	const times = [];
 	console.log(`=============================`);
 	console.log(`Running ${benchName}...`);
-	const times = [];
 	console.log(`Running warmup iterations ${wmIterations} times`);
 	warmup(cb, wmIterations);
 	console.log(`Running measure iterations ${iterations} times`);
@@ -79,9 +80,6 @@ const measureExecutionTime = (benchName, cb, wmIterations, iterations) => {
 		const exTime = performance.measure(`measurement#${i}`, startMark, endMark).duration;
 		times.push(exTime);
 	}
-	const mean = average(times);
-	console.log(`Results is: ${mean}ms \n`);
+	const averageEx = average(times);
+	console.log(`Results is: ${averageEx}ms \n`);
 };
-
-measureExecutionTime("array#sort", () => array.sort(), 10000, 10000);
-measureExecutionTime("array#find", () => array.find((value) => value == 569), 10000, 10000);
