@@ -1,4 +1,5 @@
 import { measureExecutionTime, array } from "./bench.js";
+import { BENCH_ARGS } from "./args.js";
 
 measureExecutionTime(
 	"array#sort",
