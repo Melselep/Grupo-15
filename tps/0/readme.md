@@ -37,4 +37,4 @@ Se hacen dos tipos de mediciones:
 
 ### Windows
 
-Si posee wsl o git bash entonces
+Perdón pero no tenemos idea como se hace en windows :)
