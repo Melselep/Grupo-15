@@ -1,3 +1,8 @@
 import { measureExecutionTime, array } from "./bench.js";
 
-measureExecutionTime("array#sort", () => array.sort(), process.argv[2], process.argv[3]);
+measureExecutionTime(
+	"array#sort",
+	() => array.sort(),
+	BENCH_ARGS.WM_ITERATIONS,
+	BENCH_ARGS.ITERATIONS
+);

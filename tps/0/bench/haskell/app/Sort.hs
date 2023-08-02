@@ -1,13 +1,11 @@
 module Main where
-import System.Environment (getArgs)   
 import Data.List(sort)
 import Bench (bench, list) 
+import Args (getCLIArgs)
 
 
 main :: IO ()
 main = do 
-  args <- getArgs
-  let wmIterations = read (head args) :: Int
-  let iterations = read (last args) :: Int 
+  [wmIterations, iterations] <- getCLIArgs
   bench "list#sort" sort list  wmIterations iterations
  
