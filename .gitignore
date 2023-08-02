@@ -1,4 +1,2 @@
-*.out
-*.hi
 *.o
-*_
+dist-newstyle
