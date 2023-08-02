@@ -45,6 +45,7 @@ run_benchmarks() {
 
 DIR=$(dirname "$0")
 cd $DIR/bench
+run_benchmarks "SINGLE SNAPSHOT" 0 1 
 run_benchmarks  "AVERAGE TIME" $WM_ITERATIONS $ITERATIONS
 
 
