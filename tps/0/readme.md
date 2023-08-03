@@ -15,8 +15,8 @@ Las medidas se hicieron bajo un hexa-core 2.9GHz Intel® i5-10400f®, 32 GiB de 
 -   Javascript
     | Algoritmos | Single shot | Average time |
     | ---------- | ----------- | ------------ |
-    | sort | 0.31418ms | 0.02003ms |
-    | find | 0.14543ms | 0.00147ms |
+    | sort | 0.15442ms | 0.01809ms |
+    | find | 0.16273ms | 0.00805ms |
 
 ## Como se midieron las ejecuciones
 
