@@ -4,7 +4,7 @@ Este repositorio es un benchmark que compara haskell y javascript
 
 ## Resultados
 
-Las medidas se hicieron bajo un hexa-core 2.9GHz Intel® i5-10400f®, 32 GiB de RAM y 2TB M.2; corriendo en Ubuntu™ 22.10 x86_64 GNU/Linux.
+Las medidas se hicieron bajo un hexa-core 2.9GHz Intel® i5-10400f®, 32 GiB de RAM y 2TB M.2; corriendo en Pop!_OS™ 22.04 x86_64 GNU/Linux.
 
 -   Haskell
     | Algoritmos | Single shot | Average time |
