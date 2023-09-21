@@ -1,2 +1,2 @@
-gcc ./ejercicio_1.c -o app.out                                                                                                                                    ok 
+gcc ./ejercicio_2.c  -o ./app.out
 ./app.out $1

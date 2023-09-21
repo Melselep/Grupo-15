@@ -91,6 +91,7 @@ int automata(char *cadena, Contadores *contador)
             conteo(estado, contador);
         }
         estado = tablaDeTransicion[estado][columna(c)];
+        printf("columna: %d", columna(c));
         c = cadena[++i];
     }
 
