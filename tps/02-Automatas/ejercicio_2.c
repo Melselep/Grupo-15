@@ -50,7 +50,6 @@ int automata(char *cadena)
         {3, 4, 4, 4},
         {3, 0, 2, 3},
         {4, 4, 4, 4},
-
     };
     int estadosAceptacion[2] = {1, 3};
     int estado = 0;
@@ -72,7 +71,6 @@ int automata(char *cadena)
         if (estado == estadosAceptacion[i])
             return 1;
     }
-
     return 0;
 }
 
