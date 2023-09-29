@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "./os.h"
 
-const char unoalnueve[9] = "123456789";
-const char masMenosPor[3] = "+-*";
+const char unoalnueve[10] = "123456789";
+const char masMenosPor[4] = "+-*";
 char *alfabetoCompleto = "0123456789+-*/";
 
 int caracterPerteceneACadena(char caracter, const char *cadena)
