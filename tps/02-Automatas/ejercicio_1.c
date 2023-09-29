@@ -1,7 +1,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "./os.h"
+#include "./input.h"
 
 const char unoalsiete[7] = "1234567";
 const char ochoynueve[2] = "89";

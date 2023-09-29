@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./os.h"
+#include <input.h>
 
 const char unoalnueve[] = "123456789";
 const char masMenosPor[] = "+-*";
@@ -165,8 +165,7 @@ int main(int argc, char *argv[])
         printf("Hay caracteres que no pertenecen al alfabeto");
     if (automata(cadena))
     {
-        // int resultadoDeOperacion = resolverCuenta(cadena);
-        printf("El resultado de la cuenta es : %d\n", 1);
+        printf("El resultado de la cuenta es : %d\n", resolverCuenta(cadena));
     }
     else
         printf("No pertenece al lenguaje");

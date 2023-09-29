@@ -1,3 +1,5 @@
+#ifndef INPUT_H_INCLUDED
+#define INPUT_H_INCLUDED
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,12 +12,9 @@ char *obtenerArgumento(int argc, char *argv[], char *rutaArchivo)
         fs = fopen(rutaArchivo, "r");
         fscanf(fs, "%[^\n]", string);
         fclose(fs);
-        if (string == "")
-        {
-            printf("No ingreso ningún argumento");
-            exit(1);
-        }
         return string;
     };
     return argv[1];
 }
+
+#endif
