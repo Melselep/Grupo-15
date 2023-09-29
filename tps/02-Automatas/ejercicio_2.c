@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "./os.h"
 
-const char unoalnueve[10] = "123456789";
-const char masMenosPor[4] = "+-*";
+const char unoalnueve[] = "123456789";
+const char masMenosPor[] = "+-*";
 char *alfabetoCompleto = "0123456789+-*/";
 
 int caracterPerteceneACadena(char caracter, const char *cadena)
@@ -58,7 +58,6 @@ int automata(char *cadena)
     while (c != '\0')
     {
         int col = columna(c);
-        printf("%c \n", col);
         estado = tablaDeTransicion[estado][col];
         c = cadena[++i];
         if (estado == 4)
@@ -161,9 +160,7 @@ int resolverCuenta(char *cadena)
 
 int main(int argc, char *argv[])
 {
-    char *cadena = obtenerUnSoloArgumento(argc, argv);
-    int a = columna('/');
-    printf("devu %d\n", a);
+    char *cadena = obtenerArgumento(argc, argv, "input_2.txt");
     if (!formaParteAlfabeto(cadena, alfabetoCompleto))
         printf("Hay caracteres que no pertenecen al alfabeto");
     if (automata(cadena))

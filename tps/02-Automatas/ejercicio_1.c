@@ -19,6 +19,7 @@ int caracterPerteceneACadena(char caracter, const char *cadena)
     }
     return 0;
 }
+
 int formaParteAlfabeto(char *s, char *alfabeto)
 {
     int i = 0;
@@ -91,7 +92,6 @@ int automata(char *cadena, Contadores *contador)
             conteo(estado, contador);
         }
         estado = tablaDeTransicion[estado][columna(c)];
-        printf("columna: %d", columna(c));
         c = cadena[++i];
     }
 
@@ -107,7 +107,7 @@ int automata(char *cadena, Contadores *contador)
 
 int main(int argc, char *argv[])
 {
-    char *palabra = obtenerUnSoloArgumento(argc, argv);
+    char *palabra = obtenerArgumento(argc, argv, "input_1.txt");
     Contadores contador = {0, 0, 0};
     if (!formaParteAlfabeto(palabra, alfabetoCompleto))
         printf("Hay caracteres que no pertenecen al alfabeto");
