@@ -2,35 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./input.h"
+#include "./lenguaje.h"
 
 const char unoalsiete[7] = "1234567";
 const char ochoynueve[2] = "89";
 const char letrasHexa[13] = "abcdefABCDEF";
 char *alfabetoCompleto = "0123456789abcdefABCDEFx$";
-
-int caracterPerteceneACadena(char caracter, const char *cadena)
-{
-    unsigned i = 0;
-    while (cadena[i] != '\0')
-    {
-        if (caracter == cadena[i])
-            return 1;
-        i++;
-    }
-    return 0;
-}
-
-int formaParteAlfabeto(char *s, char *alfabeto)
-{
-    int i = 0;
-    while (s[i] != '\0')
-    {
-        if (!(caracterPerteceneACadena(s[i], alfabetoCompleto)))
-            return 0;
-        i++;
-    }
-    return 1;
-}
 
 int columna(char c)
 {
@@ -110,12 +87,15 @@ int main(int argc, char *argv[])
     char *palabra = obtenerArgumento(argc, argv, "input_1.txt");
     Contadores contador = {0, 0, 0};
     if (!formaParteAlfabeto(palabra, alfabetoCompleto))
-        printf("Hay caracteres que no pertenecen al alfabeto");
+    {
+        printf("Hay caracteres que no pertenecen al alfabeto\n");
+        return 0;
+    }
     if (automata(palabra, &contador))
     {
         printf("El conteo de cada numero es: \ndecimal: %d \noctal: %d\nhexa: %d\n", contador.decimales, contador.octales, contador.hexadecimales);
     }
     else
-        printf("No pertenece al lenguaje");
+        printf("No pertenece al lenguaje\n");
     return 0;
 }

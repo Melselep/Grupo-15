@@ -1,33 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <input.h>
+#include "./input.h"
+#include "./lenguaje.h"
 
 const char unoalnueve[] = "123456789";
 const char masMenosPor[] = "+-*";
 char *alfabetoCompleto = "0123456789+-*/";
 
-int caracterPerteceneACadena(char caracter, const char *cadena)
+int calcular(int numero1, int numero2, char operador)
 {
-    unsigned i = 0;
-    while (cadena[i] != '\0')
+    switch (operador)
     {
-        if (caracter == cadena[i])
-            return 1;
-        i++;
-    }
-    return 0;
-}
-
-int formaParteAlfabeto(char *s, char *alfabeto)
-{
-    int i = 0;
-    while (s[i] != '\0')
+    case '+':
+        return numero1 + numero2;
+    case '-':
+        return numero1 - numero2;
+    case '*':
+        return numero1 * numero2;
+    case '/':
+        return numero1 / numero2;
+    default:
     {
-        if (!(caracterPerteceneACadena(s[i], alfabetoCompleto)))
-            return 0;
-        i++;
+        printf("Operación no permitida. Saliendo del programa...");
+        exit(1);
+    };
     }
-    return 1;
 }
 
 int columna(char c)
@@ -103,15 +100,7 @@ int multiplicacionOdivision(char *cadena, int *i, int numero)
     int resultado;
     (*i)++;
     int numero2 = obtenerNumero(cadena, i);
-    if (operador == '*')
-    {
-        resultado = numero * numero2;
-    }
-    else
-    {
-        resultado = numero / numero2;
-    }
-    return resultado;
+    return calcular(numero, numero2, operador);
 }
 
 int sumaOresta(char *cadena, int *i, int acumulado)
@@ -124,15 +113,7 @@ int sumaOresta(char *cadena, int *i, int acumulado)
     {
         acumulado2 = multiplicacionOdivision(cadena, i, acumulado2);
     }
-    if (operador == '+')
-    {
-        resultado = acumulado + acumulado2;
-    }
-    else
-    {
-        resultado = acumulado - acumulado2;
-    }
-    return resultado;
+    return calcular(acumulado, acumulado2, operador);
 }
 
 int resolverCuenta(char *cadena)
@@ -163,7 +144,7 @@ int main(int argc, char *argv[])
     char *cadena = obtenerArgumento(argc, argv, "input_2.txt");
     if (!formaParteAlfabeto(cadena, alfabetoCompleto))
         printf("Hay caracteres que no pertenecen al alfabeto");
-    if (automata(cadena))
+    else if (automata(cadena))
     {
         printf("El resultado de la cuenta es : %d\n", resolverCuenta(cadena));
     }
