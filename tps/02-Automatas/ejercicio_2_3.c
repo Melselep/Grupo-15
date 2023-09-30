@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./input.h"
-#include "./lenguaje.h"
+#include "./utils.h"
 
 const char unoalnueve[] = "123456789";
 const char masMenosPor[] = "+-*";
@@ -38,44 +38,6 @@ int columna(char c)
     if (c == '0')
         return 3;
 }
-
-int automata(char *cadena)
-{
-    const int tablaDeTransicion[5][4] = {
-        {3, 4, 4, 1},
-        {4, 0, 2, 4},
-        {3, 4, 4, 4},
-        {3, 0, 2, 3},
-        {4, 4, 4, 4},
-    };
-    int estadosAceptacion[2] = {1, 3};
-    int estado = 0;
-    int i = 0;
-    char c = cadena[i];
-    while (c != '\0')
-    {
-        int col = columna(c);
-        estado = tablaDeTransicion[estado][col];
-        c = cadena[++i];
-        if (estado == 4)
-        {
-            return 0;
-        }
-    }
-    for (int i = 0; i < 2; i++)
-    {
-        if (estado == estadosAceptacion[i])
-            return 1;
-    }
-    return 0;
-}
-
-int charAnumero(char c)
-{
-    if (c >= '0' && c <= '9')
-        return c - '0';
-    return -1;
-};
 
 int combinarNumeros(int number1, int number2)
 {
@@ -142,9 +104,17 @@ int resolverCuenta(char *cadena)
 int main(int argc, char *argv[])
 {
     char *cadena = obtenerArgumento(argc, argv, "input_2.txt");
+    int tablaDeTransicion[5][4] = {
+        {3, 4, 4, 1},
+        {4, 0, 2, 4},
+        {3, 4, 4, 4},
+        {3, 0, 2, 3},
+        {4, 4, 4, 4},
+    };
+    int estadosAceptacion[2] = {1, 3};
     if (!formaParteAlfabeto(cadena, alfabetoCompleto))
         printf("Hay caracteres que no pertenecen al alfabeto");
-    else if (automata(cadena))
+    else if (automata(cadena, 4, tablaDeTransicion, columna, 2, estadosAceptacion))
     {
         printf("El resultado de la cuenta es : %d\n", resolverCuenta(cadena));
     }

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./input.h"
-#include "./lenguaje.h"
+#include "./utils.h"
 
 const char unoalsiete[7] = "1234567";
 const char ochoynueve[2] = "89";
@@ -44,7 +44,7 @@ void conteo(int estado, Contadores *contador)
         (*contador).hexadecimales++;
 }
 
-int automata(char *cadena, Contadores *contador)
+int automataYConteo(char *cadena, Contadores *contador)
 {
     const int tablaDeTransicion[10][7] = {
         {3, 1, 2, 2, 9, 9, 9},
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
         printf("Hay caracteres que no pertenecen al alfabeto\n");
         return 0;
     }
-    if (automata(palabra, &contador))
+    if (automataYConteo(palabra, &contador))
     {
         printf("El conteo de cada numero es: \ndecimal: %d \noctal: %d\nhexa: %d\n", contador.decimales, contador.octales, contador.hexadecimales);
     }
