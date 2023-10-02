@@ -4,10 +4,12 @@ K2006
 
 2023  
 
+  
 Grupo 15  
 
 Nombre del grupo: Avatar  
 
+  
 Autores de la resolución:  
 
   
@@ -19,6 +21,7 @@ Nicolau
 
 Marcos  
 
+  
 
 abrilnimo  
 
@@ -28,7 +31,8 @@ Dominguez Nimo
 
 Abril  
 
-  
+
+    
 
 Melselep  
 
@@ -39,6 +43,7 @@ Perez
 Melisa Selene  
 
 
+  
   
 02 Automatas
   
