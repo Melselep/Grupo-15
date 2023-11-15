@@ -1,4 +1,4 @@
-all: flex bison micro
+all: flex bison micro clean
 
 bison: 
 	bison -yd micro.y 
