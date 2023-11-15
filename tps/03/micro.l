@@ -4,6 +4,7 @@
 	#include "y.tab.h"
 %}
 
+
 DIGITO [0-9]
 
 LETRA [a-zA-Z]
@@ -26,4 +27,5 @@ constEntera {DIGITO}({DIGITO})*
 ")" {return PARENDERECHO;}
 "+" {return SUMA;}
 "-" {return RESTA;}
+<<EOF>> {return FDT;}
 %%

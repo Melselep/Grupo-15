@@ -10,4 +10,4 @@ micro: flex bison
 	gcc y.tab.c lex.yy.c -o micro.out
 
 clean:
-	rm micro lex.yy.c y.tab.c y.tab.h
+	rm lex.yy.c y.tab.c y.tab.h
