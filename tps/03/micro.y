@@ -51,6 +51,7 @@ int main() {
 }
 void yyerror (char *s){
   printf ("Hubo un error sintáctico o semántico: %s\n",s);
+  exit(1);
 }
 int yywrap() {
   return 1;  
