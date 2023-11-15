@@ -18,12 +18,12 @@ extern void yyerror(char*);
 %token <num> CONSTANTE
 
 %%
-objetivo: programa FDT {printf("El programa es sintacticamente correcto!"); exit(0);}
+objetivo: programa FDT {printf("El programa es sintacticamente correcto! \n"); exit(0);}
 programa: INICIO sentencias FIN 
 sentencias:  sentencias sentencia 
 |sentencia
 ;
-sentencia: ID {if(yyleng>32) yyerror("la longitud de la sentencia es mayor que lo permitido");} ASIGNACION expresion PYCOMA
+sentencia: ID {if(yyleng>32) yyerror("la longitud del identificador es mayor que lo permitido");} ASIGNACION expresion PYCOMA
 | LEER PARENIZQUIERDO  lista_identificadores PARENDERECHO PYCOMA
 | ESCRIBIR PARENIZQUIERDO lista_expresiones PARENDERECHO PYCOMA 
 ;
